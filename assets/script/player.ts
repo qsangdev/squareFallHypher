@@ -27,7 +27,9 @@ export default class Player extends cc.Component {
             let node = other.node;
             let enemy = node.getComponent(Enemy);
             let isMatch = enemy.isMatch;
+            node.destroy();
             this.main.handleEnemyContact(isMatch);
+            
         }
     }
 
@@ -44,7 +46,11 @@ export default class Player extends cc.Component {
             this.node.x += this.speed;
             let viewWidth = this.node.parent.width /2;
             let width = this.node.width;
-            if(this.node.x >  viewWidth - width/2 || this.node.x < -viewWidth + width/2){
+            if(this.node.x >  viewWidth - width/2){
+                this.node.x = viewWidth - width/2;
+                this.revertDirection();
+            }else if(this.node.x < -viewWidth + width/2){
+                this.node.x = -viewWidth + width/2;
                 this.revertDirection();
             }
         }

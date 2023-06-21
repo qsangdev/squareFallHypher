@@ -31,7 +31,6 @@ export default class Enemy extends cc.Component {
     }
 
     get isMatch(){
-        this.node.destroy();
         return this._isMatch;
     }
 

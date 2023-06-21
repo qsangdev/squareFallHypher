@@ -66,6 +66,7 @@ export default class Main extends cc.Component {
         if(!isMatch){
             this.gameOver();
         }else{
+            this.generateEnemy();
             this.score += 1;
             this.lblScore.string = this.score + "";
         }
